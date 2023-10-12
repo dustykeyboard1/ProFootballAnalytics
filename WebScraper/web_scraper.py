@@ -10,24 +10,29 @@ from pro_football_reference_web_scraper import player_game_log, player_splits, t
 import json
 
 class WebScraper:
-    def __init__(self, team1, team2, config_file='WebScraper/config.json'):
-        with open(config_file, 'r') as f:
-            config = json.load(f)
+    def __init__(self, team1, team2, qb1, qb2, config_file='WebScraper/config.json'):
         self.team1 = team1
         self.team2 = team2
+        self.team1qb = qb1
+        self.team2qb = qb2
         self.parsed_data = None
 
     def fetch_data(self):
         self.team1_data = team_game_log.get_team_game_log(team=self.team1, season=2023)
         self.team2_data = team_game_log.get_team_game_log(team=self.team2, season=2023)
+        self.team1_qb_data = player_game_log.get_player_game_log(player = self.team1qb, position='QB', season=2023)
+        self.team2_qb_data = player_game_log.get_player_game_log(player = self.team2qb, position='QB', season=2023)
 
     def parse_data(self):
         # You can add your parsing logic here, if needed
         pass
 
     def save_data(self, file_name='temp_data.json'):
-        with open(file_name, 'w') as f:
-            json.dump(self.parsed_data, f)
+        self.team1_data.to_csv(f'DataOrganizer/{self.team1}_team_data.csv', index=False)
+        self.team2_data.to_csv(f'DataOrganizer/{self.team2}_team_data.csv', index=False)
+        self.team1_qb_data.to_csv(f'DataOrganizer/{self.team1}_QB_data.csv', index=False)
+        self.team2_qb_data.to_csv(f'DataOrganizer/{self.team2}_QB_data.csv', index=False)
+        return f'DataOrganizer/{self.team1}_team_data.csv', f'DataOrganizer/{self.team2}_team_data.csv', f'DataOrganizer/{self.team1}_QB_data.csv', f'DataOrganizer/{self.team2}_QB_data.csv'
 
     def print_team_data(self):
         print(self.team1_data)

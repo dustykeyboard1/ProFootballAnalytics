@@ -1,41 +1,32 @@
 # ProFootballAnalytics
 
-## Table of Contents
+## Quick Links
 
 - [Overview](#overview)
-- [Installation](#installation)
-- [Directory Structure](#directory-structure)
-- [Usage](#usage)
-- [Class Responsibilities](#class-responsibilities)
-- [Contributing](#contributing)
+- [Setup](#setup)
+- [File Structure](#file-structure)
+- [How to Use](#how-to-use)
+- [Classes & Methods](#classes--methods)
+- [Contribute](#contribute)
 - [License](#license)
 
 ---
 
 ## Overview
 
-`ProFootballAnalytics` is a Python-based project designed to scrape, clean, analyze, and visualize data from Pro Football Reference. The project aims to provide valuable insights into player performance, team dynamics, and other football-related statistics.
+`ProFootballAnalytics` is a Python project for scraping and analyzing Pro Football Reference data. Gain insights into player stats, team performance, and more.
 
 ---
 
-## Installation
+## Setup
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/ProFootballAnalytics.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd ProFootballAnalytics
-    ```
-3. Install the required packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. Clone repo: `git clone https://github.com/yourusername/ProFootballAnalytics.git`
+2. Go to directory: `cd ProFootballAnalytics`
+3. Install packages: `pip install -r requirements.txt`
 
 ---
 
-## Directory Structure
+## File Structure
 
 ```
 ProFootballAnalytics/
@@ -53,43 +44,32 @@ ProFootballAnalytics/
 
 ---
 
-## Usage
+## How to Use
 
-Run the main script to execute the entire pipeline:
-
-```bash
-python main.py
-```
+Run `python main.py` to start the pipeline.
 
 ---
 
-## Class Responsibilities
+## Classes & Methods
 
-- **WebScraper**: Scrapes data from Pro Football Reference.
-  - Methods: `fetch_data()`, `parse_data()`
-  
-- **DataOrganizer**: Cleans and organizes the scraped data.
-  - Methods: `clean_data()`, `organize_data()`
-  
-- **StatisticalTesting**: Runs statistical tests on the organized data.
-  - Methods: `run_t_test()`, `run_anova()`, `run_correlation()`
-  
-- **Plotting**: Plots data and statistical results.
-  - Methods: `plot_histogram()`, `plot_scatter()`, `plot_boxplot()`
+- **WebScraper**: `fetch_data()`, `parse_data()`
+- **DataOrganizer**: `clean_data()`, `organize_data()`
+- **StatisticalTesting**: `run_t_test()`, `run_anova()`, `run_correlation()`
+- **Plotting**: `plot_histogram()`, `plot_scatter()`, `plot_boxplot()`
 
 ---
 
-## Contributing
+## Contribute
 
-1. Fork the repository.
-2. Create a new branch.
-3. Make your changes.
-4. Submit a pull request.
+1. Fork repo
+2. Create branch
+3. Make changes
+4. Open PR
 
-For more details, see [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for details.
+MIT License. See [LICENSE.md](LICENSE.md).
