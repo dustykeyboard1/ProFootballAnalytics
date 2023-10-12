@@ -1,0 +1,11 @@
+{
+    "base_url": "https://www.pro-football-reference.com/teams/",
+    "headers": {
+      "User-Agent": "Mozilla/5.0"
+    },
+    "other_params": {
+      "timeout": 10,
+      "retries": 3
+    }
+  }
+  
