@@ -11,9 +11,12 @@ sys.path.append(root_dir)
 from WebScraper.web_scraper import WebScraper
 
 def main():
-    scraper = WebScraper('nyg', 'mia')
-    scraper.set_teams()
+    scraper = WebScraper(team1="Miami Dolphins", team2="New York Giants")
     scraper.fetch_data()
+    scraper.parse_data()
+    scraper.save_data()
+    scraper.print_team_data()
+
 
 
 main()
