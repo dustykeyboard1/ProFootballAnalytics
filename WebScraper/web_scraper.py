@@ -32,6 +32,7 @@ class WebScraper:
         self.team2_data.to_csv(f'DataOrganizer/{self.team2}_team_data.csv', index=False)
         self.team1_qb_data.to_csv(f'DataOrganizer/{self.team1}_QB_data.csv', index=False)
         self.team2_qb_data.to_csv(f'DataOrganizer/{self.team2}_QB_data.csv', index=False)
+        return f'DataOrganizer/{self.team1}_team_data.csv', f'DataOrganizer/{self.team2}_team_data.csv', f'DataOrganizer/{self.team1}_QB_data.csv', f'DataOrganizer/{self.team2}_QB_data.csv'
 
     def print_team_data(self):
         print(self.team1_data)
