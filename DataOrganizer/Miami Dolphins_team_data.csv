@@ -1,0 +1,18 @@
+week,day,rest_days,home_team,distance_travelled,opp,result,points_for,points_allowed,tot_yds,pass_yds,rush_yds,opp_tot_yds,opp_pass_yds,opp_rush_yds
+1,Sun,10 days,False,2338.4648057326885,Los Angeles Chargers,W,36,34,536,466,70,433,200,233
+2,Sun,7 days,False,1189.7865080892295,New England Patriots,W,24,17,389,244,145,288,200,88
+3,Sun,7 days,True,0.0,Denver Broncos,W,70,20,726,376,350,363,294,69
+4,Sun,7 days,False,1168.05160961266,Buffalo Bills,L,20,48,393,251,142,414,310,104
+5,Sun,7 days,True,0.0,New York Giants,W,31,16,524,302,222,268,183,85
+6,Sun,7 days,True,0.0,Carolina Panthers,,0,0,0,0,0,0,0,0
+7,Sun,7 days,False,1000.9935600197928,Philadelphia Eagles,,0,0,0,0,0,0,0,0
+8,Sun,7 days,True,0.0,New England Patriots,,0,0,0,0,0,0,0,0
+9,Sun,7 days,False,1242.5595541447972,Kansas City Chiefs,,0,0,0,0,0,0,0,0
+11,Sun,14 days,True,0.0,Las Vegas Raiders,,0,0,0,0,0,0,0,0
+12,Fri,5 days,False,1066.3466580435988,New York Jets,,0,0,0,0,0,0,0,0
+13,Sun,9 days,False,903.4573709480925,Washington Commanders,,0,0,0,0,0,0,0,0
+14,Mon,8 days,True,0.0,Tennessee Titans,,0,0,0,0,0,0,0,0
+15,Sun,6 days,True,0.0,New York Jets,,0,0,0,0,0,0,0,0
+16,Sun,7 days,True,0.0,Dallas Cowboys,,0,0,0,0,0,0,0,0
+17,Sun,7 days,False,927.5267188045094,Baltimore Ravens,,0,0,0,0,0,0,0,0
+18,Sun,7 days,True,0.0,Buffalo Bills,,0,0,0,0,0,0,0,0

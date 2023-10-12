@@ -1,0 +1,18 @@
+week,day,rest_days,home_team,distance_travelled,opp,result,points_for,points_allowed,tot_yds,pass_yds,rush_yds,opp_tot_yds,opp_pass_yds,opp_rush_yds
+1,Mon,10 days,False,281.34515791595953,New York Jets,L,16,22,314,217,97,289,117,172
+2,Sun,6 days,True,0.0,Las Vegas Raiders,W,38,10,450,267,183,240,185,55
+3,Sun,7 days,False,283.33593111454843,Washington Commanders,W,37,3,386,218,168,230,125,105
+4,Sun,7 days,True,0.0,Miami Dolphins,W,48,20,414,310,104,393,251,142
+5,Sun,7 days,True,0.0,Jacksonville Jaguars,L,20,25,388,359,29,474,278,196
+6,Sun,7 days,True,0.0,New York Giants,,0,0,0,0,0,0,0,0
+7,Sun,7 days,False,382.2098280505603,New England Patriots,,0,0,0,0,0,0,0,0
+8,Thu,4 days,True,0.0,Tampa Bay Buccaneers,,0,0,0,0,0,0,0,0
+9,Sun,10 days,False,409.7868094620446,Cincinnati Bengals,,0,0,0,0,0,0,0,0
+10,Mon,8 days,True,0.0,Denver Broncos,,0,0,0,0,0,0,0,0
+11,Sun,6 days,True,0.0,New York Jets,,0,0,0,0,0,0,0,0
+12,Sun,7 days,False,276.84357307465064,Philadelphia Eagles,,0,0,0,0,0,0,0,0
+14,Sun,14 days,False,867.2886732994752,Kansas City Chiefs,,0,0,0,0,0,0,0,0
+15,Sun,7 days,True,0.0,Dallas Cowboys,,0,0,0,0,0,0,0,0
+16,Sat,6 days,False,2212.955562106473,Los Angeles Chargers,,0,0,0,0,0,0,0,0
+17,Sun,8 days,True,0.0,New England Patriots,,0,0,0,0,0,0,0,0
+18,Sun,7 days,False,1168.05160961266,Miami Dolphins,,0,0,0,0,0,0,0,0
