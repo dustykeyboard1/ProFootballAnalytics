@@ -16,14 +16,16 @@ def main():
     team2 = "Denver Broncos"
     qb1 = "Patrick Mahomes"
     qb2 = 'Russell Wilson'
+    year = 2022
 
-    scraper = WebScraper(team1=team1, team2=team2, qb1=qb1, qb2=qb2)
+    scraper = WebScraper(team1=team1, team2=team2, qb1=qb1, qb2=qb2, year=year)
     scraper.fetch_data()
     scraper.parse_data()
     team1csv, team2csv, qb1csv, qb2csv = scraper.save_data()
 
     testsuite = StatisticalTesting(team1csv, team2csv)
     testsuite.moneyline_logistic_regression()
+    testsuite.run_chi_squared_test()
     
 
 main()
