@@ -6,7 +6,7 @@ Create a class called 'WebScraper' to scrape, parse and store data from
 the ProFootballReference website.
 '''
 
-from pro_football_reference_web_scraper import player_game_log, player_splits, team_game_log, team_splits
+from pro_football_reference_web_scraper import player_game_log, player_splits, team_game_log, team_splits, team_rankings_and_stats
 import json
 import pandas as pd
 
@@ -19,26 +19,32 @@ class WebScraper:
         self.parsed_data = None
         self.year = year
 
-    def fetch_data(self, team = False, QB = False):
+    def fetch_data(self, team = False, QB = False, rankings = False):
         if team: 
             self.team1_data = team_game_log.get_team_game_log(team=self.team1, season=self.year)
             self.team2_data = team_game_log.get_team_game_log(team=self.team2, season=self.year)
         if QB:
             self.team1_qb_data = player_game_log.get_player_game_log(player = self.team1qb, position='QB', season=self.year)
             self.team2_qb_data = player_game_log.get_player_game_log(player = self.team2qb, position='QB', season=self.year)
+        if rankings: 
+            self.team1_rankings = team_rankings_and_stats.get_team_stats_and_rankings(team=self.team1, season=self.year)
+            self.team2_rankings = team_rankings_and_stats.get_team_stats_and_rankings(team=self.team2, season=self.year)
 
     def parse_data(self):
         # You can add your parsing logic here, if needed
         pass
 
-    def save_data(self, file_name='temp_data.json', team = False, QB = False):
+    def save_data(self, file_name='temp_data.json', team = False, QB = False, rankings = False):
         if team: 
             self.team1_data.to_csv(f'DataOrganizer/{self.team1}_team_data.csv', index=False)
             self.team2_data.to_csv(f'DataOrganizer/{self.team2}_team_data.csv', index=False)
         if QB: 
             self.team1_qb_data.to_csv(f'DataOrganizer/{self.team1}_QB_data.csv', index=False)
             self.team2_qb_data.to_csv(f'DataOrganizer/{self.team2}_QB_data.csv', index=False)
-        return f'DataOrganizer/{self.team1}_team_data.csv', f'DataOrganizer/{self.team2}_team_data.csv', f'DataOrganizer/{self.team1}_QB_data.csv', f'DataOrganizer/{self.team2}_QB_data.csv'
+        if rankings:
+            self.team1_rankings.to_csv(f'DataOrganizer/{self.team1}_ranking_data.csv', index=False)
+            self.team2_rankings.to_csv(f'DataOrganizer/{self.team2}_ranking_data.csv', index=False)
+        return f'DataOrganizer/{self.team1}_team_data.csv', f'DataOrganizer/{self.team2}_team_data.csv', f'DataOrganizer/{self.team1}_QB_data.csv', f'DataOrganizer/{self.team2}_QB_data.csv', f'DataOrganizer/{self.team1}_ranking_data.csv', f'DataOrganizer/{self.team2}_ranking_data.csv'
 
     def print_team_data(self):
         print(self.team1_data)

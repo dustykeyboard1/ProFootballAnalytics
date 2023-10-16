@@ -10,9 +10,12 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
+import seaborn as sns
 
 class StatisticalTesting:
-    def __init__(self, team1_data = None, team2_data = None):
+    def __init__(self, team1, team2, team1_data = None, team2_data = None):
+        self.team1 = team1
+        self.team2 = team2
         self.team1_data = None
         self.team2_data = None
         if team1_data:
@@ -20,7 +23,8 @@ class StatisticalTesting:
         if team2_data:
             self.team2_data = pd.read_csv(team2_data)
 
-        self.preprocess_data()
+        if self.team1_data or self.team2_data:
+            self.preprocess_data()
 
     def preprocess_data(self):
         '''
@@ -103,7 +107,7 @@ class StatisticalTesting:
         plt.ylabel('Feature')
         plt.title('Impact of Features on MoneyLine')
         plt.tight_layout()
-        plt.show()
+        plt.show(block = False)
 
         return odds_ratio
     
@@ -127,6 +131,78 @@ class StatisticalTesting:
             print("Variables are dependent (reject H0)")
         else:
             print("Variables are independent (fail to reject H0)")
+
+    def compare_important_features(self):
+        self.team1_rank_data = pd.read_csv(f'DataOrganizer/{self.team1}_ranking_data.csv', skiprows=1, index_col=0)
+        self.team2_rank_data = pd.read_csv(f'DataOrganizer/{self.team2}_ranking_data.csv', skiprows=1, index_col=0)
+        if self.team1_rank_data is None or self.team2_rank_data is None:
+            print('Both team data must be loaded for comparison.')
+            return
+
+
+        # Select important features
+        # Define important features with categories for clarity
+        important_features = {
+            'Tot Yds & TO': ['PF', 'Yds', 'TO'],
+            'Passing': ['Cmp', 'Att', 'Yds.1', 'TD', 'Int'],
+            'Rushing': ['Att.1', 'Yds.2', 'TD.1']
+        }
+
+        # Create a list to hold the differences
+         # Extract important features from both datasets
+        team1_important =  self.team1_rank_data.loc['Team Stats', [f'{feature}' for category in important_features for feature in important_features[category]]]
+        team2_important =  self.team2_rank_data.loc['Team Stats', [f'{feature}' for category in important_features for feature in important_features[category]]]
+        
+        # Calculate the difference
+        difference = team1_important - team2_important
+        
+        # Create a new DataFrame to hold the differences with more descriptive column names
+        difference_descriptive = pd.Series(index=[f'{category}_{feature}' for category in important_features for feature in important_features[category]], dtype='float64')
+        for category in important_features:
+            for feature in important_features[category]:
+                difference_descriptive[f'{category}_{feature}'] = difference[feature]
+        
+        # Plotting
+        plt.figure(figsize=(12, 8))
+        sns.barplot(x=difference_descriptive.index, y=difference_descriptive.values)
+        plt.title('Difference in Important Features between Team 1 and Team 2')
+        plt.xlabel('Features')
+        plt.ylabel('Difference')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show(block = False)
+
+    def compare_additional_stats(self, stats_categories = ['Opp. Stats', 'Lg Rank Offense', 'Lg Rank Defense']):
+        # Extract additional stats and calculate the difference
+        important_features = {
+            'Tot Yds & TO': ['PF', 'Yds', 'TO'],
+            'Passing': ['Att', 'Yds.1', 'TD', 'Int'],
+            'Rushing': ['Att.1', 'Yds.2', 'TD.1']
+        }
+
+        for category in stats_categories:
+            team1_important = self.team1_rank_data.loc[category, :]
+            team2_important = self.team2_rank_data.loc[category, :]
+
+            # Filter only important features
+            team1_important = team1_important.filter(items=[feature for group in important_features.values() for feature in group])
+            team2_important = team2_important.filter(items=[feature for group in important_features.values() for feature in group])
+
+            # Calculate the difference
+            difference_additional = team1_important - team2_important
+
+            # Plotting
+            plt.figure(figsize=(12, 8))
+            sns.barplot(x=difference_additional.index, y=difference_additional.values)
+            plt.title(f'Difference in {category} between Team 1 and Team 2')
+            plt.xlabel('Features')
+            plt.ylabel('Difference')
+            plt.xticks(rotation=45)
+            plt.show(block = False)
+
+
+
+
 
 
 
